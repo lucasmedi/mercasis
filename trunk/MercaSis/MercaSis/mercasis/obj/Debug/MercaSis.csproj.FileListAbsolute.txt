@@ -1,0 +1,9 @@
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\bin\Debug\mercasis.exe
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\bin\Debug\mercasis.pdb
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\obj\Debug\ResolveAssemblyReference.cache
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\obj\Debug\MercaSis.FrmCadastroCliente.resources
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\obj\Debug\MercaSis.FrmMain.resources
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\obj\Debug\MercaSis.Properties.Resources.resources
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\obj\Debug\MercaSis.csproj.GenerateResource.Cache
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\obj\Debug\mercasis.exe
+D:\Projetos\MercaSis\MercaSis\MercaSis\mercasis\obj\Debug\mercasis.pdb

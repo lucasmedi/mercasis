@@ -1,0 +1,5 @@
+D:\Projetos\MercaSis\MercaSis\MercaSis\MercaSisTOs\bin\Debug\MercaSisTOs.dll
+D:\Projetos\MercaSis\MercaSis\MercaSis\MercaSisTOs\bin\Debug\MercaSisTOs.pdb
+D:\Projetos\MercaSis\MercaSis\MercaSis\MercaSisTOs\obj\Debug\ResolveAssemblyReference.cache
+D:\Projetos\MercaSis\MercaSis\MercaSis\MercaSisTOs\obj\Debug\MercaSisTOs.dll
+D:\Projetos\MercaSis\MercaSis\MercaSis\MercaSisTOs\obj\Debug\MercaSisTOs.pdb
