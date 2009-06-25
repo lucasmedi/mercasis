@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercaSisTestes", "MercaSisTestes\MercaSisTestes.csproj", "{BAEFEA3F-B7A3-48A8-A59A-3D9B7EDE7F01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercaSisFE", "MercaSisFE\MercaSisFE.csproj", "{AA85DD11-6643-4528-A676-2665090D8488}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercaSis.net", "MercaSis.net\MercaSis.net.csproj", "{AA85DD11-6643-4528-A676-2665090D8488}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
