@@ -68,21 +68,12 @@ namespace MercaSisFE
         public DateTime Convert_Data(string data)
         {
             #region Convertendo texto para data
-            string dataFinal="";
-            //data.Replace('/', '-');
-            string []dataConv=data.Split('/');/*
-            StringBuilder texto = new StringBuilder();
-            texto.Append(dataConv[2]);
-            texto.Append('-');
-            texto.Append(dataConv[1]);
-            texto.Append('-');
-            texto.Append(dataConv[0]);
-            dataFinal = texto.ToString();*/
+            string []dataConv=data.Split('/');
             int dia = Convert.ToInt32(dataConv[0]);
             int mes = Convert.ToInt32(dataConv[1]);
             int ano = Convert.ToInt32(dataConv[2]);
             DateTime Time = new DateTime(ano,mes,dia);
-            return Time; //Convert.ToDateTime(dataFinal);
+            return Time;
             #endregion
         }
         public string Convert_Telefone(string ddd, string tel)

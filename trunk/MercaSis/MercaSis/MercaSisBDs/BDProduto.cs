@@ -264,8 +264,6 @@ namespace MercaSisBDs
             }
         }
 
-
-
         #endregion
 
         #region Métodos Privados
