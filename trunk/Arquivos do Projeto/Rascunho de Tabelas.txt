@@ -1,0 +1,36 @@
+Tabelas:
+
+- Produto;
+codigo
+preço
+qtd. estoque
+
+- Custo frete:
+valor
+cep
+
+- Custo regiao:
+valor minimo
+cep
+
+- Pedido;
+codigo
+preço total
+preço com frente
+forma de pagto.
+situacao
+data pedido
+data entrega
+
+- Itens de Pedido:
+codigo
+preco
+qtd.
+
+- Cliente;
+nome
+cpf
+endereco
+e-mail
+telefone
+cep 
