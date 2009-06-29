@@ -1,1 +1,0 @@
-<img alt="" src="/bd/ImagensBD/<%# Eval("pro_imagem") %>" />
