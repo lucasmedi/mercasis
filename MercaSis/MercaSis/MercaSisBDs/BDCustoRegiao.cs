@@ -53,7 +53,7 @@ namespace MercaSisBDs
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = conn;
                     cmd.CommandText = "update CustoRegiao set cre_regiao = @regiao, cre_preco = @preco where cre_codigo = @codigo";
-                    SqlParameter pCodigo = new SqlParameter("@codigo", cre.Codigo.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", cre.Codigo);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
                     cmd = Parameters(cmd, cre);
@@ -86,7 +86,7 @@ namespace MercaSisBDs
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = conn;
                     cmd.CommandText = "delete CustoRegiao where cre_codigo = @codigo";
-                    SqlParameter pCodigo = new SqlParameter("@codigo", cre.Codigo.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", cre.Codigo);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
                     cmd.Prepare();
@@ -204,12 +204,12 @@ namespace MercaSisBDs
 
         private SqlCommand Parameters(SqlCommand cmd, TOCustoRegiao cre)
         {
-            SqlParameter pRegiao = new SqlParameter("@regiao", cre.Regiao.Valor);
+            SqlParameter pRegiao = new SqlParameter("@regiao", cre.Regiao);
             pRegiao.SqlDbType = SqlDbType.VarChar;
             pRegiao.Size = 255;
             cmd.Parameters.Add(pRegiao);
 
-            SqlParameter pPreco = new SqlParameter("@preco", cre.Custo.Valor);
+            SqlParameter pPreco = new SqlParameter("@preco", cre.Custo);
             pPreco.SqlDbType = SqlDbType.Float;
             cmd.Parameters.Add(pPreco);
 
@@ -218,9 +218,9 @@ namespace MercaSisBDs
 
         private TOCustoRegiao PopularDTO(TOCustoRegiao custoRegBuscado, SqlDataReader reader)
         {
-            custoRegBuscado.Codigo.Valor= (Int32)reader["cre_codigo"];
-            custoRegBuscado.Regiao.Valor = (string)reader["cre_regioao"];
-            custoRegBuscado.Custo.Valor = (Int32)reader["cre_preco"];
+            custoRegBuscado.Codigo = (Int32)reader["cre_codigo"];
+            custoRegBuscado.Regiao = (string)reader["cre_regioao"];
+            custoRegBuscado.Custo = (Int32)reader["cre_preco"];
 
             return custoRegBuscado;
         }

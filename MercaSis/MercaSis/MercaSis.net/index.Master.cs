@@ -53,7 +53,7 @@ namespace scie
             RNCliente rnCli = new RNCliente();
             TOCliente toCli = new TOCliente();
             toCli = rnCli.BuscarPorLogin(txtUserName.Text, txtPassword.Text);
-            if (toCli.NomeCompleto.Valor == null)
+            if (toCli.NomeCompleto == null)
             {
                 lblUserSenhEr.Visible = true;
                 //Response.Redirect("Login.aspx");
@@ -61,7 +61,7 @@ namespace scie
             else
             {
                 lblUserSenhEr.Visible = false;
-                lblApelido.Text = "Olá " + toCli.Apelido.Valor + ".";
+                lblApelido.Text = "Olá " + toCli.Apelido + ".";
                 lblApelido.Visible = true;
                 Session["TOCliente"] = toCli;
             }
