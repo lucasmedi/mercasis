@@ -7,7 +7,7 @@ using MercaSisBDs;
 
 namespace MercaSisRNs
 {
-    public class RNCustoFrete :ConnectionString
+    public class RNCustoFrete
     {
         public void CadastrarCustoFrete(TOCustoFrete cfr)
         {

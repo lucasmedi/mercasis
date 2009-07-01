@@ -7,7 +7,7 @@ using MercaSisTOs;
 
 namespace MercaSisRNs
 {
-    public class RNCustoRegiao:ConnectionString
+    public class RNCustoRegiao
     {
         public void CadastrarCustoRegiao(TOCustoRegiao cre)
         {
