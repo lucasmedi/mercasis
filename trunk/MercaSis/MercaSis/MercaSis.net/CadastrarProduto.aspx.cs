@@ -47,23 +47,23 @@ namespace MercaSisFE
             }
             else
             {
-               toPro.Imagem.Valor = "Default.jpg";
+               toPro.Imagem = "Default.jpg";
             }
-            toPro.Nome.Valor = txtNome.Text;
-            toPro.PrecoUnit.Valor = Convert.ToDouble(txtPrecoUnit.Text);
-            toPro.Descricao.Valor = txtDescricao.Text;
-            toPro.QuantidadeEstoque.Valor = Convert.ToInt32(txtQtdEstoque.Text);
-            toPro.Peso.Valor = Convert.ToDouble(txtPeso.Text);
+            toPro.Nome = txtNome.Text;
+            toPro.PrecoUnit = Convert.ToDouble(txtPrecoUnit.Text);
+            toPro.Descricao = txtDescricao.Text;
+            toPro.QuantidadeEstoque = Convert.ToInt32(txtQtdEstoque.Text);
+            toPro.Peso = Convert.ToDouble(txtPeso.Text);
             if (txtNovaCategoria.Visible == true)
             {
                 rnPro.CadastrarNovaCategoria(txtNovaCategoria.Text);
-                toPro.Categoria.Valor= rnPro.BuscarCodCategoria(txtNovaCategoria.Text);
+                toPro.Categoria = rnPro.BuscarCodCategoria(txtNovaCategoria.Text);
             }
             else
             {
-                toPro.Categoria.Valor = rnPro.BuscarCodCategoria(ddlCategoria.SelectedValue);
+                toPro.Categoria = rnPro.BuscarCodCategoria(ddlCategoria.SelectedValue);
             }
-            toPro.Imagem.Valor =NomeImg;
+            toPro.Imagem = NomeImg;
             rnPro.InserirProduto(toPro);
             
             string myScript = @"function AlertCadastrado() { alert('Cadastrado com Sucesso!'); } AlertCadastrado();";

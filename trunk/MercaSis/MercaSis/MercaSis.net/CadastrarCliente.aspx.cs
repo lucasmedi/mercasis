@@ -30,35 +30,35 @@ namespace MercaSisFE
         {
             #region Preparando o Cadastramento de um Novo Cliente
             TOCliente cliente = new TOCliente();
-            cliente.NomeCompleto.Valor = txtNome.Text;
+            cliente.NomeCompleto = txtNome.Text;
             if (txtCPF.Enabled == true)
             {
-                cliente.Cpf_Cnpj.Valor = txtCPF.Text;
-                cliente.Entidade.Valor = "";
+                cliente.Cpf_Cnpj = txtCPF.Text;
+                cliente.Entidade = "";
             }
             else
             {
-                cliente.Cpf_Cnpj.Valor = txtCNPJ.Text;
-                cliente.Entidade.Valor = txtEntidade.Text;
+                cliente.Cpf_Cnpj = txtCNPJ.Text;
+                cliente.Entidade = txtEntidade.Text;
             }
-            cliente.Sexo.Valor = rblSexo.SelectedValue;
-            cliente.DataNascimento.Valor = Convert_Data(txtDataNasc.Text);
-            cliente.DataCadastro.Valor = DateTime.Now;
-            cliente.Telefone.Valor = Convert_Telefone(txtDDDRes.Text, txtTelRes.Text);
-            cliente.TelefoneSec.Valor = Convert_Telefone(txtDDDCel.Text, txtTelCel.Text);
-            cliente.Email.Valor = txtEmail.Text;
+            cliente.Sexo = rblSexo.SelectedValue;
+            cliente.DataNascimento = Convert_Data(txtDataNasc.Text);
+            cliente.DataCadastro = DateTime.Now;
+            cliente.Telefone = Convert_Telefone(txtDDDRes.Text, txtTelRes.Text);
+            cliente.TelefoneSec = Convert_Telefone(txtDDDCel.Text, txtTelCel.Text);
+            cliente.Email = txtEmail.Text;
             if (txtSenha.Text == txtConfSenha.Text)
             {
-                cliente.Senha.Valor = txtSenha.Text;
+                cliente.Senha = txtSenha.Text;
             }
-            cliente.Apelido.Valor = txtComoChamar.Text;
-            cliente.Endereco.Valor = txtEndereco.Text;
-            cliente.Numero.Valor = Convert.ToInt32(txtNumero.Text);
-            cliente.Complemento.Valor = txtComplemento.Text;
-            cliente.Cep.Valor = Converte_CEP(txtCEPIni.Text, txtCEPFim.Text);
-            cliente.Bairro.Valor = txtBairro.Text;
-            cliente.Cidade.Valor = txtCidade.Text;
-            cliente.Uf.Valor = ddlEstado.SelectedValue;
+            cliente.Apelido = txtComoChamar.Text;
+            cliente.Endereco = txtEndereco.Text;
+            cliente.Numero = Convert.ToInt32(txtNumero.Text);
+            cliente.Complemento = txtComplemento.Text;
+            cliente.Cep = Converte_CEP(txtCEPIni.Text, txtCEPFim.Text);
+            cliente.Bairro = txtBairro.Text;
+            cliente.Cidade = txtCidade.Text;
+            cliente.Uf = ddlEstado.SelectedValue;
             RNCliente rnCli = new RNCliente();
             rnCli.CadastraCliente(cliente);
 

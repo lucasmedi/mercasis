@@ -7,8 +7,8 @@ namespace MercaSisTOs
 {
     public class TOCustoRegiao
     {
-        public Campo<int> Codigo = new Campo<int>();
-        public Campo<string> Regiao = new Campo<string>();
-        public Campo<float> Custo = new Campo<float>();
+        public int Codigo { get; set; }
+        public string Regiao { get; set; }
+        public float Custo { get; set; }        
     }
 }

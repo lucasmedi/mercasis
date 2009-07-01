@@ -54,7 +54,7 @@ namespace MercaSisBDs
                     cmd.Connection = conn;
                     cmd.CommandText = "update CustoFrete set cfr_preco = @preco where cfr_codigo = @codigo";
 
-                    SqlParameter pCodigo = new SqlParameter("@codigo", cfr.Codigo.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", cfr.Codigo);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
 
@@ -89,7 +89,7 @@ namespace MercaSisBDs
                     cmd.Connection = conn;
                     cmd.CommandText = "delete CustoFrete where cfr_codigo = @codigo";
 
-                    SqlParameter pCodigo = new SqlParameter("@codigo", cfr.Codigo.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", cfr.Codigo);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
 
@@ -196,12 +196,11 @@ namespace MercaSisBDs
 
         #endregion
 
-
         #region Métodos Privados
 
         private SqlCommand Parameters(SqlCommand cmd, TOCustoFrete cfr)
         {
-            SqlParameter pPreco = new SqlParameter("@preco", cfr.Custo.Valor);
+            SqlParameter pPreco = new SqlParameter("@preco", cfr.Custo);
             pPreco.SqlDbType = SqlDbType.Float;
             cmd.Parameters.Add(pPreco);
 
@@ -210,8 +209,8 @@ namespace MercaSisBDs
 
         private TOCustoFrete PopularDTO(TOCustoFrete custoFreBuscado, SqlDataReader reader)
         {
-            custoFreBuscado.Codigo.Valor = (Int32)reader["cfr_codigo"];
-            custoFreBuscado.Custo.Valor = (Int32)reader["cfr_preco"];
+            custoFreBuscado.Codigo = (Int32)reader["cfr_codigo"];
+            custoFreBuscado.Custo = (Int32)reader["cfr_preco"];
 
             return custoFreBuscado;
         }

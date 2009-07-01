@@ -38,7 +38,7 @@ namespace MercaSisFE
             RNCliente rnCli = new RNCliente();
             TOCliente toCli = new TOCliente();
             toCli = rnCli.BuscarPorLogin(txtUsuario.Text, txtSenha.Text);
-            if (toCli.NomeCompleto.Valor == null)
+            if (toCli.NomeCompleto == null)
             {
                 lblUserSenhEr.Text = "Usuário ou Senha incorretos";
                 lblUserSenhEr.Visible = true;

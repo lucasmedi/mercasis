@@ -48,7 +48,7 @@ namespace MercaSisBDs
             {
                 try
                 {
-                    long codigo = prod.Codigo.Valor;
+                    long codigo = prod.Codigo;
                     conn.Open();
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.Text;
@@ -57,7 +57,7 @@ namespace MercaSisBDs
                         "pro_qtd_estoque = @qtdEstoque, pro_peso = @peso, pro_categoria = @categoria," +
                         "pro_descricao = @descricao, pro_imagem = @imagem where pro_codigo = @codigo";
 
-                    SqlParameter pCodigo = new SqlParameter("@codigo", prod.Codigo.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", prod.Codigo);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
 
@@ -92,7 +92,7 @@ namespace MercaSisBDs
                     cmd.Connection = conn;
                     cmd.CommandText = "delete Produto where prod_codigo = @codigo";
 
-                    SqlParameter pCodigo = new SqlParameter("@codigo", prod.Codigo.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", prod.Codigo);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
 
@@ -270,33 +270,33 @@ namespace MercaSisBDs
 
         private SqlCommand Parameters(SqlCommand cmd, TOProduto prod)
         {
-            SqlParameter pNome = new SqlParameter("@nome", prod.Nome.Valor);
+            SqlParameter pNome = new SqlParameter("@nome", prod.Nome);
             pNome.SqlDbType = SqlDbType.VarChar;
             pNome.Size = 255;
             cmd.Parameters.Add(pNome);
 
-            SqlParameter pPreco = new SqlParameter("@preco", prod.PrecoUnit.Valor);
+            SqlParameter pPreco = new SqlParameter("@preco", prod.PrecoUnit);
             pPreco.SqlDbType = SqlDbType.Float;
             cmd.Parameters.Add(pPreco);
 
-            SqlParameter pEstoque = new SqlParameter("@qtdEstoque", prod.QuantidadeEstoque.Valor);
+            SqlParameter pEstoque = new SqlParameter("@qtdEstoque", prod.QuantidadeEstoque);
             pEstoque.SqlDbType = SqlDbType.Int;
             cmd.Parameters.Add(pEstoque);
 
-            SqlParameter pPeso = new SqlParameter("@peso", prod.Peso.Valor);
+            SqlParameter pPeso = new SqlParameter("@peso", prod.Peso);
             pPeso.SqlDbType = SqlDbType.Float;
             cmd.Parameters.Add(pPeso);
 
-            SqlParameter pCategoria = new SqlParameter("@categoria", prod.Categoria.Valor);
+            SqlParameter pCategoria = new SqlParameter("@categoria", prod.Categoria);
             pCategoria.SqlDbType = SqlDbType.Int;
             cmd.Parameters.Add(pCategoria);
 
-            SqlParameter pDescricao = new SqlParameter("@descricao", prod.Descricao.Valor);
+            SqlParameter pDescricao = new SqlParameter("@descricao", prod.Descricao);
             pDescricao.SqlDbType = SqlDbType.VarChar;
             pDescricao.Size = 255;
             cmd.Parameters.Add(pDescricao);
 
-            SqlParameter pImagem = new SqlParameter("@imagem", prod.Imagem.Valor);
+            SqlParameter pImagem = new SqlParameter("@imagem", prod.Imagem);
             pImagem.SqlDbType = SqlDbType.VarChar;
             pImagem.Size = 255;
             cmd.Parameters.Add(pImagem);
@@ -306,14 +306,14 @@ namespace MercaSisBDs
 
         private TOProduto PopularDTO(TOProduto produtoBuscado, SqlDataReader reader)
         {
-            produtoBuscado.Codigo.Valor = (Int32)reader["pro_codigo"];
-            produtoBuscado.Nome.Valor = (string)reader["pro_nome"];
-            produtoBuscado.PrecoUnit.Valor = (double)reader["pro_preco"];
-            produtoBuscado.QuantidadeEstoque.Valor = (Int32)reader["pro_qtd_estoque"];
-            produtoBuscado.Peso.Valor = (double)reader["pro_peso"];
-            produtoBuscado.Categoria.Valor = (Int32)reader["pro_categoria_codigo"];
-            produtoBuscado.Descricao.Valor = (string)reader["pro_descricao"];
-            //produtoBuscado.Imagem.Valor = (string)reader["pro_imagem"];
+            produtoBuscado.Codigo = (Int32)reader["pro_codigo"];
+            produtoBuscado.Nome = (string)reader["pro_nome"];
+            produtoBuscado.PrecoUnit = (double)reader["pro_preco"];
+            produtoBuscado.QuantidadeEstoque = (Int32)reader["pro_qtd_estoque"];
+            produtoBuscado.Peso = (double)reader["pro_peso"];
+            produtoBuscado.Categoria = (Int32)reader["pro_categoria_codigo"];
+            produtoBuscado.Descricao = (string)reader["pro_descricao"];
+            //produtoBuscado.Imagem = (string)reader["pro_imagem"];
 
             return produtoBuscado;
         }

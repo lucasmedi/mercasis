@@ -51,7 +51,7 @@ namespace MercaSisBDs
             {
                 try
                 {
-                    long codigo = ped.CodigoPedido.Valor;
+                    long codigo = ped.CodigoPedido;
                     conn.Open();
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandType = CommandType.Text;
@@ -66,7 +66,7 @@ namespace MercaSisBDs
                         " ped_situacao = @situacao, ped_data_pedido = @dataPedido," +
                         " ped_data_entrega = @dataEntrega where ped_codigo = @codigo";
 
-                    SqlParameter pCodigo = new SqlParameter("@codigo", ped.CodigoPedido.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", ped.CodigoPedido);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
 
@@ -100,7 +100,7 @@ namespace MercaSisBDs
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = conn;
                     cmd.CommandText = "delete Pedido where ped_codigo = @codigo";
-                    SqlParameter pCodigo = new SqlParameter("@codigo", ped.CodigoPedido.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", ped.CodigoPedido);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
                     cmd.Prepare();
@@ -168,77 +168,77 @@ namespace MercaSisBDs
 
         private SqlCommand Parameters(SqlCommand cmd, TOPedido ped)
         {
-            SqlParameter pCodigoCliente = new SqlParameter("@codigoCliente", ped.CodigoCliente.Valor);
+            SqlParameter pCodigoCliente = new SqlParameter("@codigoCliente", ped.CodigoCliente);
             pCodigoCliente.SqlDbType = SqlDbType.Int;
             cmd.Parameters.Add(pCodigoCliente);
 
-            SqlParameter pCodigoItens = new SqlParameter("@codigoItens", ped.CodigoItemProd.Valor);
+            SqlParameter pCodigoItens = new SqlParameter("@codigoItens", ped.CodigoItemProd);
             pCodigoItens.SqlDbType = SqlDbType.Int;
             cmd.Parameters.Add(pCodigoItens);
 
-            SqlParameter pEnderecoEntrega = new SqlParameter("@enderecoEntrega", ped.EnderecoEntrega.Valor);
+            SqlParameter pEnderecoEntrega = new SqlParameter("@enderecoEntrega", ped.EnderecoEntrega);
             pEnderecoEntrega.SqlDbType = SqlDbType.VarChar;
             pEnderecoEntrega.Size = 255;
             cmd.Parameters.Add(pEnderecoEntrega);
 
-            SqlParameter pNumeroEntrega = new SqlParameter("@numeroEntrega", ped.NumeroEntrega.Valor);
+            SqlParameter pNumeroEntrega = new SqlParameter("@numeroEntrega", ped.NumeroEntrega);
             pNumeroEntrega.SqlDbType = SqlDbType.VarChar;
             pNumeroEntrega.Size = 255;
             cmd.Parameters.Add(pNumeroEntrega);
 
-            SqlParameter pBairroEntrega = new SqlParameter("@bairroEntrega", ped.BairroEntrega.Valor);
+            SqlParameter pBairroEntrega = new SqlParameter("@bairroEntrega", ped.BairroEntrega);
             pBairroEntrega.SqlDbType = SqlDbType.VarChar;
             pBairroEntrega.Size = 255;
             cmd.Parameters.Add(pBairroEntrega);
 
-            SqlParameter pCompEntrega = new SqlParameter("@compEntrega", ped.ComplementoEntrega.Valor);
+            SqlParameter pCompEntrega = new SqlParameter("@compEntrega", ped.ComplementoEntrega);
             pCompEntrega.SqlDbType = SqlDbType.VarChar;
             pCompEntrega.Size = 255;
             cmd.Parameters.Add(pCompEntrega);
 
-            SqlParameter pCidadeEntrega = new SqlParameter("@cidadeEntrega", ped.CidadeEntrega.Valor);
+            SqlParameter pCidadeEntrega = new SqlParameter("@cidadeEntrega", ped.CidadeEntrega);
             pCidadeEntrega.SqlDbType = SqlDbType.VarChar;
             pCidadeEntrega.Size = 255;
             cmd.Parameters.Add(pCidadeEntrega);
 
-            SqlParameter pEstadoEntrega = new SqlParameter("@estadoEntrega", ped.EstadoEntrega.Valor);
+            SqlParameter pEstadoEntrega = new SqlParameter("@estadoEntrega", ped.EstadoEntrega);
             pEstadoEntrega.SqlDbType = SqlDbType.VarChar;
             pEstadoEntrega.Size = 255;
             cmd.Parameters.Add(pEstadoEntrega);
 
-            SqlParameter pCepEntrega = new SqlParameter("@cepEntrega", ped.CEPEntrega.Valor);
+            SqlParameter pCepEntrega = new SqlParameter("@cepEntrega", ped.CEPEntrega);
             pCepEntrega.SqlDbType = SqlDbType.VarChar;
 
             pCepEntrega.Size = 255;
             cmd.Parameters.Add(pCepEntrega);
 
-            SqlParameter pPrecoLiq = new SqlParameter("@precoLiq", ped.PrecoLiquido.Valor);
+            SqlParameter pPrecoLiq = new SqlParameter("@precoLiq", ped.PrecoLiquido);
             pPrecoLiq.SqlDbType = SqlDbType.Float;
             cmd.Parameters.Add(pPrecoLiq);
 
-            SqlParameter pPrecoFrete = new SqlParameter("@precoFrete", ped.PrecoFrete.Valor);
+            SqlParameter pPrecoFrete = new SqlParameter("@precoFrete", ped.PrecoFrete);
             pPrecoFrete.SqlDbType = SqlDbType.Float;
             cmd.Parameters.Add(pPrecoFrete);
 
-            SqlParameter pPrecoTotal = new SqlParameter("@precoTotal", ped.PrecoTotal.Valor);
+            SqlParameter pPrecoTotal = new SqlParameter("@precoTotal", ped.PrecoTotal);
             pPrecoTotal.SqlDbType = SqlDbType.Float;
             cmd.Parameters.Add(pPrecoTotal);
 
-            SqlParameter pFormaPagto = new SqlParameter("@formaPagto", ped.FormaPagto.Valor);
+            SqlParameter pFormaPagto = new SqlParameter("@formaPagto", ped.FormaPagto);
             pFormaPagto.SqlDbType = SqlDbType.VarChar;
             pFormaPagto.Size = 255;
             cmd.Parameters.Add(pFormaPagto);
 
-            SqlParameter pSituacao = new SqlParameter("@situacao", ped.Situacao.Valor);
+            SqlParameter pSituacao = new SqlParameter("@situacao", ped.Situacao);
             pSituacao.SqlDbType = SqlDbType.VarChar;
             pSituacao.Size = 255;
             cmd.Parameters.Add(pSituacao);
 
-            SqlParameter pDataPedido = new SqlParameter("@dataPedido", ped.DataPedido.Valor);
+            SqlParameter pDataPedido = new SqlParameter("@dataPedido", ped.DataPedido);
             pDataPedido.SqlDbType = SqlDbType.DateTime;
             cmd.Parameters.Add(pDataPedido);
 
-            SqlParameter pDataEntrega = new SqlParameter("@dataEntrega", ped.DataEntrega.Valor);
+            SqlParameter pDataEntrega = new SqlParameter("@dataEntrega", ped.DataEntrega);
             pDataEntrega.SqlDbType = SqlDbType.DateTime;
             cmd.Parameters.Add(pDataEntrega);
 
@@ -247,23 +247,23 @@ namespace MercaSisBDs
 
         private TOPedido PopularDTO(TOPedido pedidoBuscado, SqlDataReader reader)
         {
-            pedidoBuscado.CodigoPedido.Valor = (Int32)reader["ped_codigo"];
-            pedidoBuscado.CodigoCliente.Valor = (Int32)reader["ped_codigo_cliente"];
-            pedidoBuscado.CodigoItemProd.Valor = (Int32)reader["ped_codigo_items"];
-            pedidoBuscado.EnderecoEntrega.Valor = (string)reader["ped_endereco_entrega"];
-            pedidoBuscado.NumeroEntrega.Valor = (Int32)reader["ped_numero_entrega"];
-            pedidoBuscado.BairroEntrega.Valor = (string)reader["ped_bairro_entrega"];
-            pedidoBuscado.ComplementoEntrega.Valor = (string)reader["ped_comp_entrega"];
-            pedidoBuscado.CidadeEntrega.Valor = (string)reader["ped_cidade_entrega"];
-            pedidoBuscado.EstadoEntrega.Valor = (string)reader["ped_estado_entrega"];
-            pedidoBuscado.CEPEntrega.Valor = (string)reader["ped_cep_entrega"];
-            pedidoBuscado.PrecoLiquido.Valor = (float)reader["ped_preco_liq"];
-            pedidoBuscado.PrecoFrete.Valor = (float)reader["ped_preco_frete"];
-            pedidoBuscado.PrecoTotal.Valor = (float)reader["ped_preco_total"];
-            pedidoBuscado.FormaPagto.Valor = (string)reader["ped_forma_pagto"];
-            pedidoBuscado.Situacao.Valor = (string)reader["ped_situacao"];
-            pedidoBuscado.DataPedido.Valor = (DateTime)reader["ped_data_pedido"];
-            pedidoBuscado.DataEntrega.Valor = (DateTime)reader["ped_data_entrega"];
+            pedidoBuscado.CodigoPedido = (Int32)reader["ped_codigo"];
+            pedidoBuscado.CodigoCliente = (Int32)reader["ped_codigo_cliente"];
+            pedidoBuscado.CodigoItemProd = (Int32)reader["ped_codigo_items"];
+            pedidoBuscado.EnderecoEntrega = (string)reader["ped_endereco_entrega"];
+            pedidoBuscado.NumeroEntrega = (Int32)reader["ped_numero_entrega"];
+            pedidoBuscado.BairroEntrega = (string)reader["ped_bairro_entrega"];
+            pedidoBuscado.ComplementoEntrega = (string)reader["ped_comp_entrega"];
+            pedidoBuscado.CidadeEntrega = (string)reader["ped_cidade_entrega"];
+            pedidoBuscado.EstadoEntrega = (string)reader["ped_estado_entrega"];
+            pedidoBuscado.CEPEntrega = (string)reader["ped_cep_entrega"];
+            pedidoBuscado.PrecoLiquido = (float)reader["ped_preco_liq"];
+            pedidoBuscado.PrecoFrete = (float)reader["ped_preco_frete"];
+            pedidoBuscado.PrecoTotal = (float)reader["ped_preco_total"];
+            pedidoBuscado.FormaPagto = (string)reader["ped_forma_pagto"];
+            pedidoBuscado.Situacao = (string)reader["ped_situacao"];
+            pedidoBuscado.DataPedido = (DateTime)reader["ped_data_pedido"];
+            pedidoBuscado.DataEntrega = (DateTime)reader["ped_data_entrega"];
 
             return pedidoBuscado;
         }

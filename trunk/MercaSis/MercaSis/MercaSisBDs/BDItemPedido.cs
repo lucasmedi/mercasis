@@ -22,15 +22,15 @@ namespace MercaSisBDs
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = conn;
                     cmd.CommandText = "insert into ItemPedido values (@CodPedido,@CodProduto,@Preco)";
-                    SqlParameter pCodigo = new SqlParameter("@CodPedido", iPed.CodigoPedido.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@CodPedido", iPed.CodigoPedido);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
 
-                    SqlParameter pCodigoPro = new SqlParameter("@CodProduto", iPed.CodigoProduto.Valor);
+                    SqlParameter pCodigoPro = new SqlParameter("@CodProduto", iPed.CodigoProduto);
                     pCodigoPro.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigoPro);
 
-                    SqlParameter pPreco = new SqlParameter("@Preco", iPed.Preco.Valor);
+                    SqlParameter pPreco = new SqlParameter("@Preco", iPed.Preco);
                     pPreco.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pPreco);
                     cmd.Prepare();
@@ -92,7 +92,7 @@ namespace MercaSisBDs
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = conn;
                     cmd.CommandText = "delete ItemPedido where ipe_codigo_pedido = @codigo";
-                    SqlParameter pCodigo = new SqlParameter("@codigo", iPed.CodigoPedido.Valor);
+                    SqlParameter pCodigo = new SqlParameter("@codigo", iPed.CodigoPedido);
                     pCodigo.SqlDbType = SqlDbType.Int;
                     cmd.Parameters.Add(pCodigo);
                     cmd.Prepare();
@@ -205,11 +205,11 @@ namespace MercaSisBDs
 
         private SqlCommand Parameters(SqlCommand cmd, TOItemPedido iPed)
         {
-            SqlParameter pCodProduto = new SqlParameter("@CodProduto", iPed.CodigoProduto.Valor);
+            SqlParameter pCodProduto = new SqlParameter("@CodProduto", iPed.CodigoProduto);
             pCodProduto.SqlDbType = SqlDbType.Int;
             cmd.Parameters.Add(pCodProduto);
 
-            SqlParameter pPreco = new SqlParameter("@Preco",iPed.Preco.Valor);
+            SqlParameter pPreco = new SqlParameter("@Preco",iPed.Preco);
             pPreco.SqlDbType = SqlDbType.Float;
             cmd.Parameters.Add(pPreco);
 
@@ -219,9 +219,9 @@ namespace MercaSisBDs
 
         private TOItemPedido PopularDTO(TOItemPedido pedidoBuscado, SqlDataReader reader)
         {
-            pedidoBuscado.CodigoPedido.Valor = (Int32)reader["ipe_codigo_pedido"];
-            pedidoBuscado.CodigoProduto.Valor = (Int32)reader["ipe_codigo_produto"];
-            pedidoBuscado.Preco.Valor = (Int32)reader["ipe_preco"];
+            pedidoBuscado.CodigoPedido = (Int32)reader["ipe_codigo_pedido"];
+            pedidoBuscado.CodigoProduto = (Int32)reader["ipe_codigo_produto"];
+            pedidoBuscado.Preco = (Int32)reader["ipe_preco"];
             
             return pedidoBuscado;
         }

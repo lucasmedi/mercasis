@@ -72,9 +72,9 @@ namespace MercaSisTestes
         {
             BDCustoFrete target = new BDCustoFrete();
             TOCustoFrete cfr = new TOCustoFrete();
-            cfr.Custo.Valor = (float)15; 
+            cfr.Custo = (float)15; 
             target.InserirCustoFrete(cfr);
-            Assert.IsNotNull(cfr.Custo.Valor);
+            Assert.IsNotNull(cfr.Custo);
         }
 
         /// <summary>
@@ -85,10 +85,10 @@ namespace MercaSisTestes
         {
             BDCustoFrete target = new BDCustoFrete();
             TOCustoFrete cfr = new TOCustoFrete();
-            cfr.Codigo.Valor = 1;
-            cfr.Custo.Valor = 10;
+            cfr.Codigo = 1;
+            cfr.Custo = 10;
             target.AlterarCustoFrete(cfr);
-            Assert.IsNotNull(cfr.Custo.Valor);
+            Assert.IsNotNull(cfr.Custo);
         }
 
         /// <summary>
@@ -99,9 +99,9 @@ namespace MercaSisTestes
         {
             BDCustoFrete target = new BDCustoFrete();
             TOCustoFrete cfr = new TOCustoFrete();
-            cfr.Codigo.Valor = 1;
+            cfr.Codigo = 1;
             target.ExcluirCustoFrete(cfr);
-            Assert.IsNotNull(cfr.Codigo.Valor);            
+            Assert.IsNotNull(cfr.Codigo);
         }        
     }
 }

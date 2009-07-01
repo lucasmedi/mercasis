@@ -70,8 +70,8 @@ namespace MercaSisTestes
         {
             TOCliente target = new TOCliente();
             string nome = "Nome";
-            target.NomeCompleto.Valor = "Nome";
-            Assert.AreSame(nome, target.NomeCompleto.Valor);
+            target.NomeCompleto = "Nome";
+            Assert.AreSame(nome, target.NomeCompleto);
         }
     }
 }
