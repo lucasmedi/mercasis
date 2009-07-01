@@ -7,7 +7,7 @@ using MercaSisTOs;
 
 namespace MercaSisRNs
 {
-    public class RNPedido :ConnectionString
+    public class RNPedido
     {
         public void CadastrarPedido(TOPedido ped)
         {
