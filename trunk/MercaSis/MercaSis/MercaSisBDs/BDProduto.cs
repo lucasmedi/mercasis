@@ -131,19 +131,10 @@ namespace MercaSisBDs
                     cmd.Connection = conn;
                     SqlParameter pProduto;
                     SqlParameter pCategoria;
-                    if (categoria != null)
-                    {
-                        cmd.CommandText = "select * from Produto";
-                        where += " where  pro_nome= @nome";
-                        pProduto = new SqlParameter("@nome", produto);
-                        pProduto.SqlDbType = SqlDbType.VarChar;
-                        pProduto.Size = 255;
-                        cmd.Parameters.Add(pProduto);
-                    }
-                    else
+                    if (categoria != "Categorias" && !String.IsNullOrEmpty(produto))
                     {
                         cmd.CommandText = "select * from Produto p,Categoria c";
-                        where += " where  p.pro_nome= @produto and c.cat_nome=@categoria";
+                        where += " where p.pro_nome = @produto and c.cat_nome = @categoria";
                         pProduto = new SqlParameter("@produto", produto);
                         pCategoria = new SqlParameter("@categoria", categoria);
                         pProduto.SqlDbType = SqlDbType.VarChar;
@@ -151,16 +142,43 @@ namespace MercaSisBDs
                         pCategoria.SqlDbType = SqlDbType.VarChar;
                         pCategoria.Size = 255;
                         cmd.Parameters.Add(pProduto);
-                        cmd.Parameters.Add(pCategoria);
+                        cmd.Parameters.Add(pCategoria);                       
                     }
-                    cmd.CommandText += where;
+                    else
+                    {
+                        if (categoria == "Categorias" && !String.IsNullOrEmpty(produto))
+                        {
+                            cmd.CommandText = "select * from Produto";
+                            where += " where pro_nome = @nome";
+                            pProduto = new SqlParameter("@nome", produto);
+                            pProduto.SqlDbType = SqlDbType.VarChar;
+                            pProduto.Size = 255;
+                            cmd.Parameters.Add(pProduto);
+                        }                        
+                        else
+                        {
+                            if (((categoria != "Categorias")&&(categoria!=null)) && String.IsNullOrEmpty(produto))
+                            {
+                                cmd.CommandText = "select * from Produto, Categoria where Produto.pro_categoria_codigo = Categoria.cat_codigo and Categoria.cat_nome = @categoria";
+                                pCategoria = new SqlParameter("@categoria", categoria);
+                                pCategoria.SqlDbType = SqlDbType.VarChar;
+                                pCategoria.Size = 255;
+                                cmd.Parameters.Add(pCategoria);   
+                            }
+                            else
+                            {
+                                cmd.CommandText = "select * from Produto";
+                            }
+                        }
+                    }
+                    //cmd.CommandText += where;
                     cmd.Prepare();
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.HasRows)
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
-                            pro = PopularDTO(pro, reader);
+                            pro = PopularDTO(reader);
                             listaTO.Add(pro);
                         }
                     }
@@ -178,6 +196,55 @@ namespace MercaSisBDs
                     conn.Close();
                 }
                 return listaTO;
+            }
+        }
+
+        public TOProduto BuscarProdutoPorCodigo(string codigo)
+        {
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                TOProduto pro = new TOProduto();
+                try
+                {
+                    string where = "";
+
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = conn;
+                    SqlParameter pProduto;
+
+                    cmd.CommandText = "select * from Produto";
+                    where += " where  pro_codigo= @codigo";
+                    pProduto = new SqlParameter("@codigo", codigo);
+                    pProduto.SqlDbType = SqlDbType.VarChar;
+                    pProduto.Size = 255;
+                    cmd.Parameters.Add(pProduto);
+
+                    cmd.CommandText += where;
+                    cmd.Prepare();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            pro = PopularDTO(reader);
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return pro; ;
             }
         }
 
@@ -220,6 +287,7 @@ namespace MercaSisBDs
                 return listaTO;
             }
         }
+
 
         public int BuscaCodigoCategoria(string categNome)
         {
@@ -304,8 +372,9 @@ namespace MercaSisBDs
             return cmd;
         }
 
-        private TOProduto PopularDTO(TOProduto produtoBuscado, SqlDataReader reader)
+        private TOProduto PopularDTO(SqlDataReader reader)
         {
+            TOProduto produtoBuscado = new TOProduto();
             produtoBuscado.Codigo = (Int32)reader["pro_codigo"];
             produtoBuscado.Nome = (string)reader["pro_nome"];
             produtoBuscado.PrecoUnit = (double)reader["pro_preco"];

@@ -47,7 +47,7 @@ namespace MercaSisFE
             {
                 lblUserSenhEr.Visible = false;
                 Session.Add("TOCliente", toCli);
-                Response.Redirect("Busca.aspx");
+                Response.Redirect("Index.aspx");
             }
         }
     }
