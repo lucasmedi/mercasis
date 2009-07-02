@@ -16,40 +16,48 @@ namespace MercaSisFE
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack == true)
+            if (IsPostBack != true)
             {
                 #region Implementar, pios não está buscando os Produtos
+
                 string busca = (string)Session["txtBusca"];
                 string categoria = (string)Session["ddlCategoria"];
+                Session.Clear();
                 RNProduto rnPro = new RNProduto();
                 List<TOProduto> Lista = new List<TOProduto>();
-                if (busca != null)
-                {
-                    Lista = rnPro.BuscarProdutos(busca, categoria);
-                }
+                Lista = rnPro.BuscarProdutos(busca, categoria);
+                GridView1.DataSource = Lista;
+                GridView1.DataBind();
+                //ListView1.DataSource = Lista;
+                //ListView1.DataBind();
+                DataGrid1.DataSource = Lista;
+                DataGrid1.DataBind();
                 #endregion
-                if (busca == "")
-                {
-                    SdsProdutos.SelectCommand = "select * from Produto where pro_categoria_codigo=" +
-                        "'" + rnPro.BuscarCodCategoria(categoria) + "'";
-                }
-                if(busca!=""&&categoria!="")
-                {
-                    SdsProdutos.SelectCommand = "select * from Produto where pro_categoria_codigo=" +
-                        "'" + rnPro.BuscarCodCategoria(categoria) + "' and pro_nome='"+busca+"'";
-                }
-                if (busca == "" && categoria == "")
-                {
-                    SdsProdutos.SelectCommand = "select * from Produto where pro_categoria_codigo=" +
-                        "'" + rnPro.BuscarCodCategoria(categoria) + "' and pro_nome='" + busca + "'";
-                }
             }
             else
             {
-
+                
+                string busca = (string)Session["txtBusca"];
+                string categoria = (string)Session["ddlCategoria"];
+                Session.Clear();
+                RNProduto rnPro = new RNProduto();
+                List<TOProduto> Lista = new List<TOProduto>();
+                Lista = rnPro.BuscarProdutos(busca, categoria);
+                GridView1.DataSource = Lista;
+                GridView1.DataBind();
+                //ListView1.DataSource = Lista;
+                //ListView1.DataBind();
+                DataGrid1.DataSource = Lista;
+                DataGrid1.DataBind();
             }
             //RNProduto rnPro = new RNProduto();
             //rnPro.ListarCategoria();
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //string id = GridView1.SelectedRow.Cells[1].Text;
+            //Server.Transfer("produtoDescricao.aspx?id="+id);
         }
     }
 }

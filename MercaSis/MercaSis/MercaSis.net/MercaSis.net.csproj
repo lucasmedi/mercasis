@@ -123,6 +123,13 @@
     <Compile Include="CadastrarProduto.aspx.designer.cs">
       <DependentUpon>CadastrarProduto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="produtoDescricao.aspx.cs">
+      <DependentUpon>produtoDescricao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="produtoDescricao.aspx.designer.cs">
+      <DependentUpon>produtoDescricao.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bd\MercaSis.mdb">
@@ -152,6 +159,7 @@
     <Content Include="CadastrarCliente.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="CadastrarProduto.aspx" />
+    <Content Include="produtoDescricao.aspx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scene1.xaml" />
