@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TOCategoria.cs" />
     <Compile Include="TOCliente.cs" />
     <Compile Include="TOCustoFrete.cs" />
     <Compile Include="TOCustoRegiao.cs" />
