@@ -1,0 +1,1 @@
+O projeto final de conclusão, do curso técnico em informática com ênfase em programação, cujo objetivo é criar um sistema que permita a compra e venda de itens variados, tal como seu gerenciamento e de seus clientes.
